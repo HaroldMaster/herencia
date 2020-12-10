@@ -6,7 +6,7 @@ public class PersonaManager {
 	private ServicioPersona serv;
 	
 	public PersonaManager(){
-		this.serv = new ServicioPersonaBDD();
+		this.serv = new ServicioPersonaArchivos();
 	}
 	
 	public ServicioPersona getServ() {
