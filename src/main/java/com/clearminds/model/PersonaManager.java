@@ -2,11 +2,19 @@ package com.clearminds.model;
 
 import com.clearminds.interfaces.ServicioPersona;
 
-public class PersonaManager {
+public class PersonaManager   {
 	private ServicioPersona serv;
 	
 	public PersonaManager(){
-		this.serv = new ServicioPersonaArchivos();
+		try {
+			Class clase =Class.forName("com.clearminds.model.ServicioPersonaBDD");
+			serv=(ServicioPersona)clase.newInstance();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new InstanceException("Error al obtener una instancia de ServicioPersona");
+		}
+
 	}
 	
 	public ServicioPersona getServ() {
